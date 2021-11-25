@@ -13,6 +13,7 @@ def solve(sudoku: Sudoku) -> Union[Sudoku, None]:
     Solve a Sudoku puzzle using Depth First Search (DFS).
     Returns a Sudoku puzzle if the puzzle is solvable, None otherwise.
     """
+
     # If sudoku is solved, nothing to be done
     if sudoku.is_solved():
         return sudoku
