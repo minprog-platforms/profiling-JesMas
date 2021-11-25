@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Iterable, Sequence
+from typing import Iterable
 
 
 class Sudoku:
@@ -20,7 +20,7 @@ class Sudoku:
         """Place value at x,y."""
         row = self._grid[y]
         new_row = ""
-        
+
         for i in range(9):
             if i == x:
                 new_row += str(value)
@@ -77,12 +77,12 @@ class Sudoku:
 
         for y in range(9):
             for x in range(9):
-                
+
                 if int(self._grid[y][x]) == 0 and next_x == -1 and next_y == -1:
                     next_x, next_y = x, y
 
         return next_x, next_y
-    
+
     def set_row_values(self, i: int) -> Iterable[int]:
         """Returns all values at i-th row."""
         values = set()
@@ -167,11 +167,11 @@ class Sudoku:
         result = True
 
         for i in range(9):
-            if values != values | self.set_column_values(i):
+            if values != values.union(self.set_column_values(i)):
                 result = False
-            if values != values | self.set_row_values(i):
+            if values != values.union(self.set_row_values(i)):
                 result = False
-            if values != values | self.set_block_values(i):
+            if values != values.union(self.set_block_values(i)):
                 result = False
 
         # changed data structure of column_values, row_values and block_values to sets. The list values was also changed
